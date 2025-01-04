@@ -1,0 +1,10 @@
+PRE/
+├── app.py              # Flask backend
+├── templates/          # HTML templates
+│   ├── login.html      # First screen with password
+│   └── form.html       # Second screen (form)
+├── static/             # Static files
+│   ├── styles.css      # CSS for the app
+│   └── script.js       # JavaScript for interactions
+│   └── form.js         # JavaScript for interactions
+│   └── form.css        # CSS

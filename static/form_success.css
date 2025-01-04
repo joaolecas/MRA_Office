@@ -1,0 +1,75 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1ead1;
+}
+
+/* Form Container Styling */
+.form-container {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Heading Styling */
+.form-container h1 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #333333;
+}
+
+/* Paragraph Styling */
+.form-container p {
+    font-size: 1em;
+    color: #333333;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Button Styling */
+.form-submit {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #b3b4b5;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-submit:hover {
+    background-color: #8a8a8a;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 15px 20px;
+    }
+
+    .form-container h1 {
+        font-size: 1.5em;
+    }
+
+    .form-container p {
+        font-size: 0.9em;
+    }
+
+    .form-submit {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}

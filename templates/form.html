@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Form Page</title>
+    <link rel="stylesheet" href="/static/form.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registo Financeiro</h1>
+        <form id="modernForm" action="/submit-form" method="POST">
+            <div class="form-group">
+                <label for="valor">Valor (€)</label>
+                <input type="number" id="valor" name="valor" step="0.01" required>
+                <div class="error" id="valorError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="date" id="data" name="data" required>
+                <div class="error" id="dataError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="">Selecione...</option>
+                    <option value="Pagamento">Pagamento</option>
+                    <option value="Recebimento">Recebimento</option>
+                </select>
+                <div class="error" id="tipoError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="subCategoria">Sub Categoria</label>
+                <select id="subCategoria" name="subCategoria" required>
+                    <option value="">Selecione...</option>
+                    <option value="Automovel">Automovel</option>
+                    <option value="Prestação Serviços">Prestação Serviços</option>
+                    <option value="Formação">Formação</option>
+                    <option value="Software e Ordem">Software e Ordem</option>
+                    <option value="PRO-LABORE">PRO-LABORE</option>
+                    <option value="PAPELARIA E GRÁFICA">PAPELARIA E GRÁFICA</option>
+                    <option value="Telefonia e Internet">Telefonia e Internet</option>
+                    <option value="TRANSPORTE">TRANSPORTE</option>
+                    <option value="Impostos">Impostos</option>
+                    <option value="Contabilidade">Contabilidade</option>
+                    <option value="Custos Indiretos">Custos Indiretos</option>
+                    <option value="Taxas e Seguros">Taxas e Seguros</option>
+                    <option value="Produção de conteúdo">Produção de conteúdo</option>
+                    <option value="Tráfego pago">Tráfego pago</option>
+                    <option value="Podcast">Podcast</option>
+                    <option value="Alimentação">Alimentação</option>
+                    <option value="Outras Despesas">Outras Despesas</option>
+                    <option value="RETIRADA - RAFAELA">RETIRADA - RAFAELA</option>
+                    <option value="WORKSHOP">WORKSHOP</option>
+                    <option value="Infoproduto">Infoproduto</option>
+                    <option value="Consultas">Consultas</option>
+                    <option value="Consultoria">Consultoria</option>
+                </select>
+                <div class="error" id="subCategoriaError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="observacoes">Observações</label>
+                <textarea id="observacoes" name="observacoes" minlength="1" required></textarea>
+                <div class="error" id="observacoesError"></div>
+            </div>
+
+            <button type="submit" class="form-submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

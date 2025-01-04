@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/styles.css"> -->
+<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple PIN Verification</title>
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+<body>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <div class="container">
+        <h1>Login</h1>
+        <form id="pinForm">
+            <label for="userSelect">User:</label>
+            <select id="userSelect" required>
+                <option value="" disabled selected>Select User</option>
+                <option value="ADMIN">ADMIN</option>
+                <option value="Mafalda">Mafalda</option>
+                <option value="João">João</option>
+            </select>
+            <label for="pinInput">PIN:</label>
+            <input type="password" id="pinInput" maxlength="4" placeholder="****" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="responseMessage"></p>
+    </div>
+    <script src="/static/login.js"></script>
+</body>
+</html>
