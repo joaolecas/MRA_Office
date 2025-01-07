@@ -40,6 +40,10 @@ def populate_table():
         db.session.commit()
 
 if __name__ == '__main__':
+    import os
+    port = int(os.environ.get('PORT', 5000))  # Use the PORT environment variable or default to 5000
+    debug = os.environ.get('DEBUG', 'False').lower() == 'true'  # Use DEBUG environment variable or default to False
     create_table()
     populate_table()
     print("Database setup and populated with initial data!")
+    app.run(host='0.0.0.0', port=port, debug=debug)
