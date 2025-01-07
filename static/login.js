@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (response.ok) {
                 const result = await response.json();
                 if (result.success) {
-                    // Redirect to the form page using the redirect_url from the response
+                    // Redirect to the form page using the redirect_url from the response (This effectively redirects the user to the new URL.)
                     window.location.href = result.redirect_url;
                 } else {
                     // Display error message if success is false

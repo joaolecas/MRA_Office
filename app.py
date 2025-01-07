@@ -6,19 +6,18 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-
-# Route for the login page
-@app.route('/')
-def index():
-    print("Hello Flask")  # Log the data to the server console
-    return render_template('login.html')
-
 # Dictionary to store users and their PINs
 user_pins = {
     "ADMIN": "1234",
     "Mafalda": "0000",
     "João": "1111"
 }
+
+# Route for the login page
+@app.route('/')
+def index():
+    print("Hello Flask")  # Log the data to the server console
+    return render_template('login.html')
 
 # Route to verify PIN
 @app.route('/verify-pin', methods=['POST'])
@@ -68,7 +67,6 @@ def submit_form():
 def success():
     return render_template('form_success.html')  # Create a success.html template
 
-
 if __name__ == '__main__':
-    # app.run(debug=True)
-    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)), debug=False)
+    app.run(debug=True)
+    # app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)), debug=False)
