@@ -67,6 +67,9 @@ def submit_form():
 def success():
     return render_template('form_success.html')  # Create a success.html template
 
-if __name__ == '__main__':
-    app.run(debug=True)
-    # app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)), debug=False)
+# Expose the `app` object for Vercel
+app = app
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+#     # app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)), debug=False)
