@@ -1,0 +1,2 @@
+postgresql://de_mra_office_owner:3MsxuRK8ByrJ@ep-fancy-wildflower-a2myytet.eu-central-1.aws.neon.tech/de_mra_office?sslmode=require
+de_mra_office

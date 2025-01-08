@@ -1,10 +1,29 @@
 
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+
 import os
 
 app = Flask(__name__)
 CORS(app)
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Replace with your Neon connection details
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+# Dictionary to store users and their PINs
+class tuser(db.Model):
+    __tablename__ = 'tuser'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String, nullable=False)
+    pin = db.Column(db.String, nullable=False)
 
 # Dictionary to store users and their PINs
 user_pins = {
@@ -17,17 +36,24 @@ user_pins = {
 @app.route('/')
 def index():
     print("Hello Flask")  # Log the data to the server console
+    # users = tuser.query.all()
+    # for user in users:
+    #     print(f"Username: {user.username}, PIN: {user.pin}")
     return render_template('login.html')
 
 # Route to verify PIN
 @app.route('/verify-pin', methods=['POST'])
 def verify_pin():
     data = request.get_json()
-    user = data.get('user')
+    username = data.get('user')
     pin = data.get('pin')
 
+    # Query the database to check if the user and pin match
+    user = tuser.query.filter_by(username=username, pin=pin).first()
+
     # Check if the user exists and the PIN matches
-    if user in user_pins and user_pins[user] == pin:
+    # if user in user_pins and user_pins[user] == pin:
+    if user:
         # Redirect to the form page with the username as a parameter
         return jsonify({
             "success": True,
