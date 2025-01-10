@@ -25,12 +25,65 @@ class tuser(db.Model):
     username = db.Column(db.String, nullable=False)
     pin = db.Column(db.String, nullable=False)
 
+class FinancialRecord(db.Model):
+    __tablename__ = 'financial_records'
+
+    id = db.Column(db.Integer, primary_key=True)
+    valor = db.Column(db.Float, nullable=False)
+    data = db.Column(db.Date, nullable=False)
+    tipo = db.Column(db.String(50), nullable=False)
+    sub_categoria = db.Column(db.String(100), nullable=False)
+    categoria = db.Column(db.String(100), nullable=False)
+    classe_financeira = db.Column(db.String(100), nullable=False)
+    observacoes = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+
 # Dictionary to store users and their PINs
 user_pins = {
     "ADMIN": "1234",
     "Mafalda": "0000",
     "João": "1111"
 }
+
+MAPPING = {
+    "Automovel": ("Aquisição de ativos", "Aquisição de Activos"),
+    "Prestação Serviços": ("Prestador de serviço", "Prestação Serviços"),
+    "Formação": ("Cursos e formações", "Despesa Var"),
+    "Consultoria": ("Consultoria", "Consultoria"),
+    "Software e Ordem": ("Licenças", "Despesa Fixa"),
+    "Vencimentos": ("Vencimentos", "Despesa Fixa"),
+    "Via verde": ("Transportes", "Despesa Var"),
+    "Papelaria / Gráfica": ("Papelaria e comunicações", "Despesa Fixa"),
+    "Telefone e Internet": ("Papelaria e comunicações", "Despesa Fixa"),
+    "Softwares e Ordem": ("Licenças", "Despesa Fixa"),
+    "Transportes": ("Transportes", "Despesa Var"),
+    "IVA": ("Impostos", "Taxas e Impostos"),
+    "Segurança Social": ("Impostos", "Taxas e Impostos"),
+    "Contabilidade": ("Contabilidade", "Despesa Fixa"),
+    "IRC": ("Impostos", "Taxas e Impostos"),
+    "Combustivel": ("Transportes", "Despesa Var"),
+    "Fotografia e Video": ("Produção de conteúdo", "Marketing"),
+    "Gestor de trafego": ("Tráfego pago", "Marketing"),
+    "Wordpress": ("Taxas", "Taxas e Impostos"),
+    "Seguros": ("Seguros", "Taxas e Impostos"),
+    "Meta": ("Tráfego pago", "Marketing"),
+    "Google": ("Tráfego pago", "Marketing"),
+    "Tiktok": ("Tráfego pago", "Marketing"),
+    "Podcast": ("Produção de conteúdo", "Marketing"),
+    "Formações/workshops": ("Eventos", "Eventos"),
+    "Restaurantes/compras": ("Alimentação", "Despesa Var"),
+    "Outras Despesas": ("Outras despesas", "Despesa Var"),
+    "SAL": ("Infoproduto", "Infoprodutos"),
+    "MARÉ": ("Infoproduto", "Infoprodutos"),
+    "COSTA": ("Infoproduto", "Infoprodutos"),
+    "DUNA": ("Infoproduto", "Infoprodutos"),
+    "CRU": ("Infoproduto", "Infoprodutos"),
+    "Consultas online": ("Consultas", "Consultas"),
+    "Consultas Ousia": ("Consultas", "Consultas"),
+    "Consultas ING": ("Consultas", "Consultas"),
+    "Campanhas Marcas/Empresas": ("Produção de conteúdo", "Marketing"),
+}
+
 
 # Route for the login page
 @app.route('/')
@@ -79,6 +132,35 @@ def submit_form():
     print("Form Data Received:", form_data)  # Log the data to the server console
 
     # Example: Save data to a database or perform other actions here
+    valor = float(form_data.get('valor'))
+    data = form_data.get('data')
+    tipo = form_data.get('tipo')
+    sub_categoria = form_data.get('subCategoria')
+    observacoes = form_data.get('observacoes')
+
+    # Derive categoria and classe_financeira from the mapping
+    categoria, classe_financeira = MAPPING.get(sub_categoria, ("Unknown", "Unknown"))
+
+    # Create a new FinancialRecord instance
+    new_record = FinancialRecord(
+        valor=valor,
+        data=data,
+        tipo=tipo,
+        sub_categoria=sub_categoria,
+        categoria=categoria,
+        classe_financeira=classe_financeira,
+        observacoes=observacoes
+    )
+
+    try:
+        # Add the record to the session and commit
+        db.session.add(new_record)
+        db.session.commit()
+        # return "Form submitted successfully!"
+    except Exception as e:
+        # Rollback in case of an error
+        db.session.rollback()
+        return f"An error occurred: {e}"
 
     # Respond with a success message
     # return jsonify({

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,5 +66,99 @@
             <button type="submit" class="form-submit">Enviar</button>
         </form>
     </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Form Page</title>
+    <link rel="stylesheet" href="/static/form.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registo Financeiro</h1>
+        <form id="modernForm" action="/submit-form" method="POST">
+            <div class="form-group">
+                <label for="valor">Valor (€)</label>
+                <input type="number" id="valor" name="valor" step="0.01" required>
+                <div class="error" id="valorError"></div>
+            </div>
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="date" id="data" name="data" required>
+                <div class="error" id="dataError"></div>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="">Selecione...</option>
+                    <option value="Pagamento">Pagamento</option>
+                    <option value="Recebimento">Recebimento</option>
+                </select>
+                <div class="error" id="tipoError"></div>
+            </div>
+            <div class="form-group">
+                <label for="subCategoria">Sub Categoria</label>
+                <select id="subCategoria" name="subCategoria" required>
+                    <option value="">Selecione...</option>
+                    <option value="Automovel">Automovel</option>
+                    <option value="Prestação Serviços">Prestação Serviços</option>
+                    <option value="Formação">Formação</option>
+                    <option value="Consultoria">Consultoria</option>
+                    <option value="Software e Ordem">Software e Ordem</option>
+                    <option value="Vencimentos">Vencimentos</option>
+                    <option value="Via verde">Via verde</option>
+                    <option value="Papelaria / Gráfica">Papelaria / Gráfica</option>
+                    <option value="Telefone e Internet">Telefone e Internet</option>
+                    <option value="Softwares e Ordem">Softwares e Ordem</option>
+                    <option value="Transportes">Transportes</option>
+                    <option value="IVA">IVA</option>
+                    <option value="Segurança Social">Segurança Social</option>
+                    <option value="Contabilidade">Contabilidade</option>
+                    <option value="IRC">IRC</option>
+                    <option value="Combustivel">Combustivel</option>
+                    <option value="Fotografia e Video">Fotografia e Video</option>
+                    <option value="Gestor de trafego">Gestor de trafego</option>
+                    <option value="Wordpress">Wordpress</option>
+                    <option value="Seguros">Seguros</option>
+                    <option value="Meta">Meta</option>
+                    <option value="Google">Google</option>
+                    <option value="Tiktok">Tiktok</option>
+                    <option value="Podcast">Podcast</option>
+                    <option value="Formações/workshops">Formações/workshops</option>
+                    <option value="Restaurantes/compras">Restaurantes/compras</option>
+                    <option value="Outras Despesas">Outras Despesas</option>
+                    <option value="SAL">SAL</option>
+                    <option value="MARÉ">MARÉ</option>
+                    <option value="COSTA">COSTA</option>
+                    <option value="DUNA">DUNA</option>
+                    <option value="CRU">CRU</option>
+                    <option value="Consultas online">Consultas online</option>
+                    <option value="Consultas Ousia">Consultas Ousia</option>
+                    <option value="Consultas ING">Consultas ING</option>
+                    <option value="Campanhas Marcas/Empresas">Campanhas Marcas/Empresas</option>
+                </select>
+                
+                <div class="error" id="subCategoriaError"></div>
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <input type="text" id="categoria" name="categoria" readonly>
+            </div>
+            <div class="form-group">
+                <label for="classeFinanceira">Classe Financeira</label>
+                <input type="text" id="classeFinanceira" name="classeFinanceira" readonly>
+            </div>
+            <div class="form-group">
+                <label for="observacoes">Observações</label>
+                <textarea id="observacoes" name="observacoes" minlength="1" required></textarea>
+                <div class="error" id="observacoesError"></div>
+            </div>
+            <button type="submit" class="form-submit">Enviar</button>
+        </form>
+    </div>
+    <script src="form.js"></script>
 </body>
 </html>
