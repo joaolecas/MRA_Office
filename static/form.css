@@ -1,85 +1,117 @@
-
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Consistent font */
+    background-color: #2d3548; /* Same dark blue-gray background */
+    color: #e0e0e0; /* Light text for readability */
     display: flex;
+    height: 100vh;
+    margin: 0;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f1ead1;
 }
 
+/* Form Container */
 .form-container {
-    background: #fff;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #394256; /* Slightly darker background for the form container */
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); /* Matching box shadow */
     width: 100%;
-    max-width: 400px;
+    max-width: 600px; /* Larger width for the form page */
+    text-align: left;
 }
 
+/* Header */
 .form-container h1 {
+    font-size: 1.8rem;
     margin-bottom: 20px;
-    font-size: 1.5em;
+    color: #c5d0e6; /* Light blue title color */
     text-align: center;
 }
 
+/* Form Group */
 .form-group {
     margin-bottom: 15px;
 }
 
+/* Labels */
 .form-group label {
     display: block;
+    font-size: 0.9rem;
     margin-bottom: 5px;
-    font-weight: bold;
+    color: #a6afc2; /* Soft blue for labels */
 }
 
+/* Inputs, Selects, and Textareas */
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid #5c667d; /* Subtle gray-blue border */
+    border-radius: 6px;
+    background-color: #2d3548; /* Dark background for inputs */
+    color: #e0e0e0; /* Light text */
+    font-size: 1rem;
     box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
 
-.form-group textarea {
-    resize: none;
-    height: 100px;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #6078c4; /* Blue border on focus */
+    outline: none;
 }
 
-.form-group input[type="number"] {
-    appearance: textfield;
+/* Placeholder Styling */
+input::placeholder,
+textarea::placeholder {
+    color: #a6afc2;
+    opacity: 0.8;
 }
 
-
-.form-group input[type="number"]::-webkit-inner-spin-button,
-.form-group input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+/* Read-only Inputs */
+.form-group input[readonly] {
+    background-color: #394256; /* Darker gray background */
+    cursor: not-allowed;
 }
 
+/* Textarea Specific */
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Error Messages */
+.error {
+    color: #e74c3c; /* Bright red for errors */
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Submit Button */
 .form-submit {
-    display: block;
     width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    background-color: #b3b4b5;
-    color: #fff;
+    padding: 12px;
+    background-color: #6078c4; /* Soft blue button */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .form-submit:hover {
-    background-color: #8a8a8a;
+    background-color: #5066a8; /* Darker blue hover */
 }
 
-.error {
-    color: red;
-    font-size: 0.9em;
-    margin-top: 5px;
+/* Responsiveness */
+@media (max-width: 400px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+    }
 }

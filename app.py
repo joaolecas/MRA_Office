@@ -157,19 +157,21 @@ def submit_form():
         db.session.add(new_record)
         db.session.commit()
         # return "Form submitted successfully!"
+        # return redirect(url_for('success'))
     except Exception as e:
         # Rollback in case of an error
         db.session.rollback()
         return f"An error occurred: {e}"
 
     # Respond with a success message
-    # return jsonify({
-    #     "success": True,
-    #     "message": "Form data submitted successfully!",
-    #     "received_data": form_data
-    # })
+    return jsonify({
+        "success": True,
+        "message": "Form data submitted successfully!",
+        "received_data": form_data,
+        "redirect_url": url_for('success')
+    })
     # Redirect to a success page
-    return redirect(url_for('success'))
+    # return redirect(url_for('success'))
 
 @app.route('/success')
 def success():

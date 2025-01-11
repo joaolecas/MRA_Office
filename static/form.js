@@ -1,23 +1,4 @@
-//  // Event listener for the dropdown
-//  document.getElementById('subCategoria').addEventListener('change', function () {
-//     const selectedValue = this.value;
-//     const output1 = document.getElementById('categoria');
-//     const output2 = document.getElementById('classeFinanceira');
-
-//     // Explicit mapping logic
-//     if (selectedValue === "Automovel") {
-//         output1.value = "Option A";
-//         output2.value = "Option a";
-//     } else if (selectedValue === "CRU") {
-//         output1.value = "Option B";
-//         output2.value = "Option b";
-//     } else {
-//         output1.value = "";
-//         output2.value = "";
-//     }
-// });
-
-
+// Preechimento automatico dos campos classe financeira e categoria
 document.getElementById('subCategoria').addEventListener('change', function () {
     const subCategoria = this.value;
     const categoriaField = document.getElementById('categoria');
@@ -138,9 +119,7 @@ document.getElementById('subCategoria').addEventListener('change', function () {
     }
 });
 
-
-
-
+// Submit
 document.getElementById('modernForm').addEventListener('submit', async function (event) {
     event.preventDefault();
     console.log("Form submission intercepted.");
@@ -159,8 +138,7 @@ document.getElementById('modernForm').addEventListener('submit', async function 
 
     // Validate Data
     const data = document.getElementById('data');
-    const today = new Date().toISOString().split('T')[0];
-    if (!data.value || data.value > today) {
+    if (!data.value ) {
         isValid = false;
         document.getElementById('dataError').textContent = 'Por favor, insira uma data válida.';
     }
@@ -181,33 +159,35 @@ document.getElementById('modernForm').addEventListener('submit', async function 
 
     // Validate Observações
     const observacoes = document.getElementById('observacoes');
-    if (!observacoes.value || observacoes.value.length < 100) {
+    if (!observacoes.value) {
         isValid = false;
-        document.getElementById('observacoesError').textContent = 'Por favor, insira pelo menos 100 caracteres.';
+        document.getElementById('observacoesError').textContent = 'Por favor, insira pelo menos 1 caractere.';
     }
 
-    // if (isValid) {
-    //     // Prepare form data for submission
-    //     const formData = new FormData(document.getElementById('modernForm'));
+    if (isValid) {
+        // Prepare form data for submission
+        const formData = new FormData(document.getElementById('modernForm'));
 
-    //     try {
-    //         const response = await fetch('/submit-form', {
-    //             method: 'POST',
-    //             body: formData
-    //         });
+        try {
+            const response = await fetch('/submit-form', {
+                method: 'POST',
+                body: formData
+            });
 
-    //         const result = await response.json();
+            const result = await response.json();
 
-    //         if (result.success) {
-    //             alert('Formulário enviado com sucesso!');
-    //             console.log('Dados recebidos pelo servidor:', result.received_data);
-    //         } else {
-    //             alert('Falha ao enviar o formulário. Por favor, tente novamente.');
-    //         }
-    //     } catch (error) {
-    //         console.error('Erro ao enviar o formulário:', error);
-    //         alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
-    //     }
-    // }
+            if (result.success) {
+                // alert('Formulário enviado com sucesso!');
+                console.log('Dados recebidos pelo servidor:', result.received_data);
+                // Redirect to the form page using the redirect_url from the response (This effectively redirects the user to the new URL.)
+                window.location.href = result.redirect_url;
+            } else {
+                alert('Falha ao enviar o formulário. Por favor, tente novamente.');
+            }
+        } catch (error) {
+            console.error('Erro ao enviar o formulário:', error);
+            alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+        }
+    }
 });
 

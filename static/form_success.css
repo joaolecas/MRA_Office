@@ -1,75 +1,63 @@
-/* General Body Styling */
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Consistent font */
+    background-color: #2d3548; /* Same dark blue-gray background */
+    color: #e0e0e0; /* Light text for readability */
     display: flex;
+    height: 100vh;
+    margin: 0;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f1ead1;
 }
 
-/* Form Container Styling */
+/* Container Styling */
 .form-container {
-    background: #ffffff;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #394256; /* Slightly darker background for the container */
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); /* Matching box shadow */
     width: 100%;
-    max-width: 400px;
-    text-align: center;
+    max-width: 600px; /* Same max-width as the form page */
+    text-align: center; /* Center text for a success message */
 }
 
-/* Heading Styling */
+/* Header Styling */
 .form-container h1 {
+    font-size: 1.8rem;
     margin-bottom: 20px;
-    font-size: 1.8em;
-    color: #333333;
+    color: #c5d0e6; /* Light blue title color */
 }
 
 /* Paragraph Styling */
 .form-container p {
-    font-size: 1em;
-    color: #333333;
+    font-size: 1rem;
     margin-bottom: 20px;
-    line-height: 1.5;
+    color: #a6afc2; /* Soft blue text for description */
 }
 
 /* Button Styling */
 .form-submit {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #b3b4b5;
-    color: #ffffff;
+    padding: 12px 20px;
+    background-color: #6078c4; /* Soft blue button */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
     border: none;
-    border-radius: 4px;
-    text-decoration: none;
+    border-radius: 6px;
     cursor: pointer;
+    text-decoration: none; /* Remove underline from the link */
     transition: background-color 0.3s ease;
 }
 
 .form-submit:hover {
-    background-color: #8a8a8a;
+    background-color: #5066a8; /* Darker blue hover */
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
+/* Responsiveness */
+@media (max-width: 400px) {
     .form-container {
-        padding: 15px 20px;
-    }
-
-    .form-container h1 {
-        font-size: 1.5em;
-    }
-
-    .form-container p {
-        font-size: 0.9em;
-    }
-
-    .form-submit {
-        font-size: 0.9em;
-        padding: 8px 16px;
+        width: 90%;
+        padding: 20px;
     }
 }
